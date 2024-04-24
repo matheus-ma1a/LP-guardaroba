@@ -131,7 +131,7 @@ const Wapper = styled.div`
     border: none;
     /* height: 45px; */
     /* width: 60%; */
-    padding: 10px 10px;
+    padding: 15px 10px;
     border-radius: 10px;
     color: #000000;
     font-size: larger;
@@ -187,7 +187,7 @@ function App() {
           <p>CLIQUE ABAIXO PARA GANHAR UM CUPOM DE R$15 REAIS NO DIA DO LANÇAMENTO E TER ACESSO À NOSSA COMUNIDADE EXCLUSIVA!</p>
         </Container>
 
-        <button onClick={handleLeadButtonClick} >Acessar Grupo VIP no Whatsapp</button>
+        <button onClick={handleLeadButtonClick} >ACESSAR GRUPO VIP NO WHATSAPP</button>
 
         {/* <Form onSubmit={cadastroMailbiz}>
           <input

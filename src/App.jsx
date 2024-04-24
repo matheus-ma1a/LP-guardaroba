@@ -160,7 +160,7 @@ function App() {
     // Dispara o evento de "Lead" quando o botão é clicado
     ReactPixel.track('Lead');
     // Abre o link do WhatsApp
-    window.open('https://api.whatsapp.com/send?phone=SEUNUMERO&text=Olá,%20quero%20mais%20informações.', '_blank');
+    //window.open('https://api.whatsapp.com/send?phone=SEUNUMERO&text=Olá,%20quero%20mais%20informações.', '_blank');
   };
 
 

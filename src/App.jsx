@@ -39,7 +39,7 @@ const Container = styled.div`
     margin-top: 1.5rem;
     text-align: center;
     font-family: "Lato", sans-serif;
-    font-weight: 100;
+    font-weight: 300;
     font-size: 1rem;
     
   }
@@ -60,59 +60,59 @@ const Container = styled.div`
   }
 `
 
-const Form = styled.form`
-  display: flex;
-  flex-direction: column;
-  gap: 0.3rem;
-  margin-top: 20px;
-  .email{
-    background-color: transparent;
-    border: solid 1px #ffffff;
-    height: 40px;
-    width: 250px;
-    border-radius: 15px;
-    color: #ffffff;
-    padding-left: 15px;
-  }
-  .nome{
-    background-color: transparent;
-    border: solid 1px #ffffff;
-    height: 40px;
-    width: 250px;
-    border-radius: 15px;
-    color: #ffffff;
-    padding-left: 15px;
-  }
-  .button{
-    margin-top: 15px;
-    background-color: #ffffff;
-    border: none;
-    height: 40px;
-    width: 250px;
-    border-radius: 10px;
-    color: #000000;
-    font-size: medium;
-    font-weight: 600;
-  }
+// const Form = styled.form`
+//   display: flex;
+//   flex-direction: column;
+//   gap: 0.3rem;
+//   margin-top: 20px;
+//   .email{
+//     background-color: transparent;
+//     border: solid 1px #ffffff;
+//     height: 40px;
+//     width: 250px;
+//     border-radius: 15px;
+//     color: #ffffff;
+//     padding-left: 15px;
+//   }
+//   .nome{
+//     background-color: transparent;
+//     border: solid 1px #ffffff;
+//     height: 40px;
+//     width: 250px;
+//     border-radius: 15px;
+//     color: #ffffff;
+//     padding-left: 15px;
+//   }
+//   .button{
+//     margin-top: 15px;
+//     background-color: #ffffff;
+//     border: none;
+//     height: 40px;
+//     width: 250px;
+//     border-radius: 10px;
+//     color: #000000;
+//     font-size: medium;
+//     font-weight: 600;
+//   }
 
-  .email::placeholder, .nome::placeholder{
-    color: #fff;
-    font-family: "Lato", sans-serif;
-    font-weight: 100;
-    font-size: 15px;
-  }
+//   .email::placeholder, .nome::placeholder{
+//     color: #fff;
+//     font-family: "Lato", sans-serif;
+//     font-weight: 100;
+//     font-size: 15px;
+//   }
 
 
-  @media (min-width: 768px) {
-    align-items: center;
-    width: 100%;
-    .email, .nome, .button{
-      width: 60%;
-      height: 50px;
-    }
+//   @media (min-width: 768px) {
+//     align-items: center;
+//     width: 100%;
+//     .email, .nome, .button{
+//       width: 60%;
+//       height: 50px;
+//     }
 
-  }
-`
+//   }
+// `
 
 const Wapper = styled.div`
 
@@ -125,20 +125,22 @@ const Wapper = styled.div`
   button{
     display: flex;
     align-items: center;
+    justify-content: center;
     margin-top: 25px;
     background-color: #ffffff;
     border: none;
-    height: 40px;
-    /* width: 250px; */
-    padding: 25px 60px;
+    /* height: 45px; */
+    /* width: 60%; */
+    padding: 10px 10px;
     border-radius: 10px;
     color: #000000;
     font-size: larger;
     font-weight: 600;
   }
-
+  
   
   @media (max-width: 950px) {
+    /* width: 80%; */
     width: auto;
     margin-left: 0;
     
@@ -182,10 +184,10 @@ function App() {
 
         <Container>
           <h1>INVERNO 24’</h1>
-          <p>SE CADASTRE AQUI PARA GANHAR UM <b>CUPOM DE R$15 REAIS</b> NO DIA DO LANÇAMENTO!</p>
+          <p>CLIQUE ABAIXO PARA GANHAR UM CUPOM DE R$15 REAIS NO DIA DO LANÇAMENTO E TER ACESSO À NOSSA COMUNIDADE EXCLUSIVA!</p>
         </Container>
 
-        <button onClick={handleLeadButtonClick} >FAÇA PARTE DA COMUNIDADE</button>
+        <button onClick={handleLeadButtonClick} >Acessar Grupo VIP no Whatsapp</button>
 
         {/* <Form onSubmit={cadastroMailbiz}>
           <input

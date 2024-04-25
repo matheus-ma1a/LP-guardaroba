@@ -12,7 +12,7 @@ const Main = styled.div`
   width: 100vw;
   align-items: start;
   display: flex;
-  padding-top: 130px;
+  padding-top: 30px;
   flex-direction: column;
   
   
@@ -23,6 +23,7 @@ const Main = styled.div`
     align-items: flex-start;
     padding-top: 200px;
   }
+
 `
 
 const Container = styled.div`
@@ -32,11 +33,11 @@ const Container = styled.div`
     text-align: center;
     font-family: "Libre Caslon Display", serif;
     font-weight: 100;
-    font-size: 50px;
+    font-size: 3rem;
   }
   
   p{
-    margin-top: 1.5rem;
+    margin-top: 1rem;
     text-align: center;
     font-family: "Lato", sans-serif;
     font-weight: 300;
@@ -44,9 +45,6 @@ const Container = styled.div`
     
   }
   
-  b{
-    font-weight: 400;
-  } 
 
   @media (min-width: 768px) {
     h1{
@@ -126,7 +124,6 @@ const Wapper = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-top: 25px;
     background-color: #ffffff;
     border: none;
     /* height: 45px; */
@@ -134,17 +131,26 @@ const Wapper = styled.div`
     padding: 15px 10px;
     border-radius: 10px;
     color: #000000;
-    font-size: larger;
-    font-weight: 600;
+    font-weight: 700;
+    font-size: 1rem;
   }
   
   
-  @media (max-width: 950px) {
+
+  @media (max-width: 768px) {
     /* width: 80%; */
     width: auto;
     margin-left: 0;
     
+    
+    button{
+      
+      font-size: 0.8rem;
+    }
   }
+
+
+
 `
 
 
@@ -162,7 +168,7 @@ function App() {
     // Dispara o evento de "Lead" quando o botão é clicado
     ReactPixel.track('Lead');
     // Abre o link do WhatsApp
-    //window.open('https://api.whatsapp.com/send?phone=SEUNUMERO&text=Olá,%20quero%20mais%20informações.', '_blank');
+    window.open('https://chat.whatsapp.com/FlvQNKjcca9ESpfZ6URj7d', '_blank');
   };
 
 

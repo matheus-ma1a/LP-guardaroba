@@ -12,7 +12,7 @@ const Main = styled.div`
   width: 100vw;
   align-items: start;
   display: flex;
-  padding-top: 30px;
+  padding-top: 50px;
   flex-direction: column;
   
   
@@ -33,7 +33,7 @@ const Container = styled.div`
     text-align: center;
     font-family: "Libre Caslon Display", serif;
     font-weight: 100;
-    font-size: 3rem;
+    font-size: 2rem;
   }
   
   p{
@@ -191,7 +191,7 @@ function App() {
 
         <Container>
           <h1>INVERNO 24’</h1>
-          <p>Clique abaixo para ganhar <b>FRETE GRÁTIS</b> no Dia do lançamento e ter acesso à nossa Comunidade Exclusiva!</p>
+          <p>Clique abaixo para ganhar <b>FRETE GRÁTIS</b> no dia do lançamento e ter acesso à nossa comunidade exclusiva!</p>
         </Container>
 
         <button onClick={handleLeadButtonClick} >Acessar grupo vip no whatsapp</button>

@@ -40,7 +40,7 @@ const Container = styled.div`
     margin-top: 1rem;
     text-align: center;
     font-family: "Lato", sans-serif;
-    font-weight: 300;
+    font-weight: 200;
     font-size: 1rem;
     
   }
@@ -131,7 +131,7 @@ const Wapper = styled.div`
     padding: 15px 10px;
     border-radius: 10px;
     color: #000000;
-    font-weight: 700;
+    font-weight: 400;
     font-size: 1rem;
   }
   

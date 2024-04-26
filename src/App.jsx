@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import ReactPixel from 'react-facebook-pixel';
 
 const Main = styled.div`
-  background-image: url('/bg-mobile.png');
+  background-image: url('/foto_mobile.jpg');
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;

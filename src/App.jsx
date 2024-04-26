@@ -40,7 +40,7 @@ const Container = styled.div`
     margin-top: 1rem;
     text-align: center;
     font-family: "Lato", sans-serif;
-    font-weight: 200;
+    font-weight: 300;
     font-size: 1rem;
     color: #fff;
     
@@ -191,10 +191,10 @@ function App() {
 
         <Container>
           <h1>INVERNO 24’</h1>
-          <p>CLIQUE ABAIXO PARA GANHAR <b>FRETE GRÁTIS</b> NO DIA DO LANÇAMENTO E TER ACESSO À NOSSA COMUNIDADE EXCLUSIVA!</p>
+          <p>Clique abaixo para ganhar <b>FRETE GRÁTIS</b> no Dia do lançamento e ter acesso à nossa Comunidade Exclusiva!</p>
         </Container>
 
-        <button onClick={handleLeadButtonClick} >ACESSAR GRUPO VIP NO WHATSAPP</button>
+        <button onClick={handleLeadButtonClick} >Acessar grupo vip no whatsapp</button>
 
         {/* <Form onSubmit={cadastroMailbiz}>
           <input

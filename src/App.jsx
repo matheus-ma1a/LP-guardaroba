@@ -42,6 +42,7 @@ const Container = styled.div`
     font-family: "Lato", sans-serif;
     font-weight: 200;
     font-size: 1rem;
+    color: #fff;
     
   }
   

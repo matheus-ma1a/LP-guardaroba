@@ -190,7 +190,7 @@ function App() {
 
         <Container>
           <h1>INVERNO 24’</h1>
-          <p>CLIQUE ABAIXO PARA GANHAR UM CUPOM DE R$15 REAIS NO DIA DO LANÇAMENTO E TER ACESSO À NOSSA COMUNIDADE EXCLUSIVA!</p>
+          <p>CLIQUE ABAIXO PARA GANHAR <b>FRETE GRÁTIS</b> NO DIA DO LANÇAMENTO E TER ACESSO À NOSSA COMUNIDADE EXCLUSIVA!</p>
         </Container>
 
         <button onClick={handleLeadButtonClick} >ACESSAR GRUPO VIP NO WHATSAPP</button>

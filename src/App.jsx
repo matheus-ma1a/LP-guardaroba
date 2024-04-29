@@ -169,7 +169,7 @@ function App() {
     // Dispara o evento de "Lead" quando o botão é clicado
     ReactPixel.track('Lead');
     // Abre o link do WhatsApp
-    window.open('https://chat.whatsapp.com/FlvQNKjcca9ESpfZ6URj7d', '_blank');
+    window.open('https://devzapp.com.br/api-engennier/campanha/api/redirect/66293b4e230a9c00011b2fd2', '_blank');
   };
 
 

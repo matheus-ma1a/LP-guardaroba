@@ -2,6 +2,8 @@ import styled from 'styled-components'
 import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 import ReactPixel from 'react-facebook-pixel';
+import axios from 'axios'
+
 
 const Main = styled.div`
   background-image: url('/foto_mobile.jpg');
@@ -59,66 +61,60 @@ const Container = styled.div`
   }
 `
 
-// const Form = styled.form`
-//   display: flex;
-//   flex-direction: column;
-//   gap: 0.3rem;
-//   margin-top: 20px;
-//   .email{
-//     background-color: transparent;
-//     border: solid 1px #ffffff;
-//     height: 40px;
-//     width: 250px;
-//     border-radius: 15px;
-//     color: #ffffff;
-//     padding-left: 15px;
-//   }
-//   .nome{
-//     background-color: transparent;
-//     border: solid 1px #ffffff;
-//     height: 40px;
-//     width: 250px;
-//     border-radius: 15px;
-//     color: #ffffff;
-//     padding-left: 15px;
-//   }
-//   .button{
-//     margin-top: 15px;
-//     background-color: #ffffff;
-//     border: none;
-//     height: 40px;
-//     width: 250px;
-//     border-radius: 10px;
-//     color: #000000;
-//     font-size: medium;
-//     font-weight: 600;
-//   }
+const Form = styled.form`
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  margin-top: 20px;
 
-//   .email::placeholder, .nome::placeholder{
-//     color: #fff;
-//     font-family: "Lato", sans-serif;
-//     font-weight: 100;
-//     font-size: 15px;
-//   }
+  .email, .nome{
+    background-color: transparent;
+    border: solid 1px #ffffff;
+    height: 40px;
+    width: 250px;
+    border-radius: 15px;
+    color: #ffffff;
+    padding-left: 15px;
+    font-size: 1.3rem;
+    font-family: "Lato", sans-serif;
+  }
+
+  .button{
+    margin-top: 15px;
+    background-color: #ffffff;
+    border: none;
+    height: 40px;
+    width: 250px;
+    border-radius: 10px;
+    color: #000000;
+    font-size: medium;
+    font-weight: 600;
+  }
+
+  .email::placeholder, .nome::placeholder{
+    color: #fff;
+    font-family: "Lato", sans-serif;
+    font-weight: 100;
+    font-size: 15px;
+  }
 
 
-//   @media (min-width: 768px) {
-//     align-items: center;
-//     width: 100%;
-//     .email, .nome, .button{
-//       width: 60%;
-//       height: 50px;
-//     }
+  @media (min-width: 768px) {
+    align-items: center;
+    width: 100%;
+    .email, .nome, .button{
+      width: 60%;
+      height: 50px;
+    }
 
-//   }
-// `
+  }
+`
 
 const Wapper = styled.div`
 
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-left: 20rem;
   width: 650px;
 
   button{
@@ -150,6 +146,12 @@ const Wapper = styled.div`
     }
   }
 
+  @media (min-width: 1180px) {
+    
+    margin-left: 10%;
+    
+  }
+
 
 
 `
@@ -165,25 +167,30 @@ function App() {
     ReactPixel.pageView(); // Rastreie a visualização da página
   }, [])
 
-  const handleLeadButtonClick = () => {
-    // Dispara o evento de "Lead" quando o botão é clicado
-    ReactPixel.track('Lead');
-    // Abre o link do WhatsApp
-    window.open('https://devzapp.com.br/api-engennier/campanha/api/redirect/66293b4e230a9c00011b2fd2', '_blank');
-  };
 
+  function cadastroMailbiz(e) {
+    e.preventDefault();
 
-  // function cadastroMailbiz(e) {
-  //   e.preventDefault();
-  //   console.log(nome);
-  //   console.log(email);
+    const options = {
+      method: 'POST',
+      url: `https://mbiz.mailclick.me/api.php/Subscriber.Subscribe?APIKey=${import.meta.env.API_KEY}&Command=Subscriber.Subscribe&ResponseFormat=JSON&ListID=13439&EmailAddress=${email}&CustomField1=${nome}&IPAddress=12`
+    };
 
-  //   // Aqui você pode realizar qualquer ação necessária após o envio do formulário,
-  //   // como enviar os dados para o servidor, exibir uma mensagem de sucesso, etc.
+    axios
+      .request(options)
+      .then(function (response) {
+        console.log(response.data);
+      })
+      .catch(function (error) {
+        console.error(error);
+      });
 
-  //   // Após isso, você pode redirecionar para a página desejada usando o objeto `history`.
-  //   history('/obrigado');
-  // }
+    // Aqui você pode realizar qualquer ação necessária após o envio do formulário,
+    // como enviar os dados para o servidor, exibir uma mensagem de sucesso, etc.
+
+    // Após isso, você pode redirecionar para a página desejada usando o objeto `history`.
+    history('/obrigado');
+  }
 
   return (
     <Main>
@@ -194,9 +201,7 @@ function App() {
           <p>Clique abaixo para ganhar <b>FRETE GRÁTIS</b> no dia do lançamento e ter acesso à nossa comunidade exclusiva!</p>
         </Container>
 
-        <button onClick={handleLeadButtonClick} >Acessar grupo vip no whatsapp</button>
-
-        {/* <Form onSubmit={cadastroMailbiz}>
+        <Form onSubmit={cadastroMailbiz}>
           <input
             className='nome'
             type="text"
@@ -209,11 +214,12 @@ function App() {
             type="email"
             name="email"
             placeholder='EMAIL'
+            required={true}
             value={email}
             onChange={(e) => setEmail(e.target.value)}
           />
           <input className='button' type="submit" value={'SE INSCREVA'} />
-        </Form> */}
+        </Form>
       </Wapper>
     </Main>
   );

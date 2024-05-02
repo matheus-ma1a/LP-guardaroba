@@ -1,5 +1,7 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styled from "styled-components";
+import ReactPixel from 'react-facebook-pixel';
+
 
 const Main = styled.div`
   background-image: url('/bg-mobile.png');
@@ -24,6 +26,7 @@ const Main = styled.div`
 `
 
 const Container = styled.div`
+
   padding: 0 30px 25px ;
   display: flex;
   flex-direction: column;
@@ -35,21 +38,18 @@ const Container = styled.div`
     font-family: "Libre Caslon Display", serif;
     font-weight: 100;
     font-size: 50px;
-}
+  }
 
-p{
+  p{
     margin-top: 1.5rem;
     text-align: center;
     font-family: "Lato", sans-serif;
-    font-weight: 100;
     font-size: 1rem;
-    
-    
   }
 
   p:nth-of-type(2){
     font-size: large;
-    font-weight: 300;
+    font-weight: 400;
   }
   
   b{
@@ -63,48 +63,58 @@ p{
     background-color: #ffffff;
     border: none;
     height: 40px;
-    /* width: 250px; */
     padding: 25px 60px;
     border-radius: 10px;
     color: #000000;
-    font-size: larger;
-    font-weight: 600;
+    font-size: medium;
+    font-weight: 300;
   }
 
   @media (min-width: 850px) {
     margin-left: 20rem;
     width: 600px;
+
     h1{
-        font-size: 5rem ;
+      font-size: 5rem ;
     }
     
     p{
-        
-        font-size: 1.7rem ;
+      font-size: 1.7rem ;
     }
 
     p:nth-of-type(2){
     font-size: larger;
-    font-weight: 300;
     }
 
 }
 
 
 `
+const handleLeadButtonClick = () => {
+  // Dispara o evento de "Lead" quando o botão é clicado
+  // Abre o link do WhatsApp
+  window.open('https://devzapp.com.br/api-engennier/campanha/api/redirect/66293b4e230a9c00011b2fd2');
+};
 
 const Obrigado = () => {
-    return (
-        <Main>
-            <Container>
-                <h1>INVERNO 24’</h1>
-                <p><b>OBRIGADA POR SE INSCREVER!</b></p>
-                <p>Clique e faça parte do nosso grupo do whatsapp e fique
-                    por dentro de todas as novidades</p>
-                <button>FAÇA PARTE DA COMUNIDADE</button>
-            </Container>
-        </Main>
-    )
+  
+  useEffect(() => {
+    ReactPixel.init('1442714005903162');
+    ReactPixel.pageView(); // Rastreie a visualização da página
+    ReactPixel.track('Lead');
+  }, [])
+
+  return (
+    <Main>
+      <Container>
+        <h1>INVERNO 24’</h1>
+        <p><b>OBRIGADA POR SE INSCREVER!</b></p>
+        <p>Clique e faça parte do nosso grupo do whatsapp e fique
+          por dentro de todas as novidades</p>
+        <button onClick={handleLeadButtonClick} >FAÇA PARTE DA COMUNIDADE</button>
+      </Container>
+    </Main>
+  )
 }
 
 export default Obrigado

@@ -1,6 +1,8 @@
 import React, { useEffect } from "react";
 import styled from "styled-components";
-import ReactPixel from 'react-facebook-pixel';
+import { fbEventsHandler } from '@rivercode/facebook-conversion-api-nextjs/handlers';
+import facebook from "../facebook";
+
 
 
 const Main = styled.div`
@@ -97,23 +99,30 @@ const handleLeadButtonClick = () => {
 };
 
 const Obrigado = () => {
+
+  const pixelLead = ()=>{
+    return fbq('track','Lead')
+  }
   
-  useEffect(() => {
-    ReactPixel.init('1442714005903162');
-    ReactPixel.pageView(); // Rastreie a visualização da página
-    ReactPixel.track('Lead');
-  }, [])
+  useEffect(()=>{
+    pixelLead()
+  },[])
+
+
+  // initializeFacebookPixel();
 
   return (
-    <Main>
-      <Container>
-        <h1>INVERNO 24’</h1>
-        <p><b>OBRIGADA POR SE INSCREVER!</b></p>
-        <p>Clique e faça parte do nosso grupo do whatsapp e fique
-          por dentro de todas as novidades</p>
-        <button onClick={handleLeadButtonClick} >FAÇA PARTE DA COMUNIDADE</button>
-      </Container>
-    </Main>
+    <fbEventsHandler>
+      <Main>
+        <Container>
+          <h1>INVERNO 24’</h1>
+          <p><b>OBRIGADA POR SE INSCREVER!</b></p>
+          <p>Clique e faça parte do nosso grupo do whatsapp e fique
+            por dentro de todas as novidades</p>
+          <button onClick={handleLeadButtonClick} >FAÇA PARTE DA COMUNIDADE</button>
+        </Container>
+      </Main>
+    </fbEventsHandler>
   )
 }
 

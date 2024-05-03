@@ -2,6 +2,7 @@ import styled from 'styled-components'
 import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 import ReactPixel from 'react-facebook-pixel';
+import { fbEventsHandler } from '@rivercode/facebook-conversion-api-nextjs/handlers';
 import axios from 'axios'
 
 
@@ -156,16 +157,11 @@ const Wapper = styled.div`
 
 `
 
-
 function App() {
   const [nome, setNome] = useState('');
   const [email, setEmail] = useState('');
   const history = useNavigate();
 
-  useEffect(() => {
-    ReactPixel.init('1442714005903162');
-    ReactPixel.pageView(); // Rastreie a visualização da página
-  }, [])
 
 
   function cadastroMailbiz(e) {
@@ -173,7 +169,7 @@ function App() {
 
     const options = {
       method: 'POST',
-      url: `https://mbiz.mailclick.me/api.php/Subscriber.Subscribe?APIKey=${import.meta.env.API_KEY}&Command=Subscriber.Subscribe&ResponseFormat=JSON&ListID=13439&EmailAddress=${email}&CustomField1=${nome}&IPAddress=12`
+      url: `https://mbiz.mailclick.me/api.php/Subscriber.Subscribe?APIKey=${process.env.API_KEY}&Command=Subscriber.Subscribe&ResponseFormat=JSON&ListID=13439&EmailAddress=${email}&CustomField1=${nome}&IPAddress=12`
     };
 
     axios
@@ -193,35 +189,39 @@ function App() {
   }
 
   return (
-    <Main>
-      <Wapper>
 
-        <Container>
-          <h1>INVERNO 24’</h1>
-          <p>Clique abaixo para ganhar <b>FRETE GRÁTIS</b> no dia do lançamento e ter acesso à nossa comunidade exclusiva!</p>
-        </Container>
+    <>
+      <Main>
 
-        <Form onSubmit={cadastroMailbiz}>
-          <input
-            className='nome'
-            type="text"
-            placeholder='NOME'
-            value={nome}
-            onChange={(e) => setNome(e.target.value)}
-          />
-          <input
-            className='email'
-            type="email"
-            name="email"
-            placeholder='EMAIL'
-            required={true}
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-          />
-          <input className='button' type="submit" value={'SE INSCREVA'} />
-        </Form>
-      </Wapper>
-    </Main>
+        <Wapper>
+
+          <Container>
+            <h1>INVERNO 24’</h1>
+            <p>Clique abaixo para ganhar <b>FRETE GRÁTIS</b> no dia do lançamento e ter acesso à nossa comunidade exclusiva!</p>
+          </Container>
+
+          <Form onSubmit={cadastroMailbiz}>
+            <input
+              className='nome'
+              type="text"
+              placeholder='NOME'
+              value={nome}
+              onChange={(e) => setNome(e.target.value)}
+            />
+            <input
+              className='email'
+              type="email"
+              name="email"
+              placeholder='EMAIL'
+              required={true}
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+            />
+            <input className='button' type="submit" value={'SE INSCREVA'} />
+          </Form>
+        </Wapper>
+      </Main>
+    </>
   );
 }
 

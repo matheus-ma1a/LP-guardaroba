@@ -150,7 +150,7 @@ function App() {
         console.error(error);
       });
 
-    history('/obrigado');
+    history('/obrigado2');
   }
 
   return (

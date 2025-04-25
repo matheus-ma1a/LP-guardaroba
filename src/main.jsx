@@ -4,7 +4,7 @@ import './index.css'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import App from './App.jsx'
 import Obrigado from './Obrigado.jsx'
-import { FBPixelScript, FBPixelProvider } from '@rivercode/facebook-conversion-api-nextjs/components';
+import Obrigado2 from './obrigado2.jsx'
 
 
 const router = createBrowserRouter([
@@ -15,6 +15,10 @@ const router = createBrowserRouter([
   {
     path: "/obrigado",
     element: <Obrigado />
+  },
+  {
+    path: "/obrigado2",
+    element: <Obrigado2 />
   },
 ])
 

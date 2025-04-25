@@ -1,7 +1,6 @@
 import React, { useEffect } from "react";
 import styled from "styled-components";
-import { fbEventsHandler } from '@rivercode/facebook-conversion-api-nextjs/handlers';
-import facebook from "../facebook";
+
 
 
 
@@ -95,7 +94,7 @@ const Container = styled.div`
 const handleLeadButtonClick = () => {
   // Dispara o evento de "Lead" quando o botão é clicado
   // Abre o link do WhatsApp
-  window.open('https://devzapp.com.br/api-engennier/campanha/api/redirect/66293b4e230a9c00011b2fd2');
+  window.open('https://chat.whatsapp.com/CV8PE4KNuWbJgmsJyv1Xs9');
 };
 
 const Obrigado = () => {

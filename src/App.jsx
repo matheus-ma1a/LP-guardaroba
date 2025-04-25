@@ -1,176 +1,145 @@
 import styled from 'styled-components'
 import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom';
-import ReactPixel from 'react-facebook-pixel';
-import { fbEventsHandler } from '@rivercode/facebook-conversion-api-nextjs/handlers';
 import axios from 'axios'
 
-
 const Main = styled.div`
-  background-image: url('/foto_mobile.jpg');
+  background-image: url('/mobile.jpg');
   background-repeat: no-repeat;
   background-size: cover;
-  background-position: center;
+  background-position: top;
   height: 100vh;
   width: 100vw;
-  align-items: start;
   display: flex;
-  padding-top: 50px;
-  flex-direction: column;
-  
-  
-  @media (min-width: 768px) {
-    
-    background-image: url('/bg-desktop.png');
-    justify-content: start;
-    align-items: flex-start;
-    padding-top: 200px;
-  }
+  justify-content: center; /* Centraliza o conteúdo no mobile */
+  align-items: center;
+  padding: 0 10%; /* Reduz o padding lateral no mobile */
 
-`
+  @media (min-width: 768px) {
+    background-image: url('/desktop.jpg');
+    display: flex;
+    justify-content: space-between; /* Espaça os elementos no desktop */
+    padding: 0 5%; /* Ajusta o padding lateral no desktop */
+  }
+`;
 
 const Container = styled.div`
-  padding: 0 30px 25px ;
-
-  h1{
-    text-align: center;
-    font-family: "Libre Caslon Display", serif;
-    font-weight: 100;
-    font-size: 2rem;
-  }
-  
-  p{
-    margin-top: 1rem;
-    text-align: center;
-    font-family: "Lato", sans-serif;
-    font-weight: 300;
-    font-size: 1rem;
-    color: #fff;
-    
-  }
-  
+  color: #fff;
+  text-align: center; /* Centraliza o texto no mobile */
+  width: 100%; /* Ajusta para ocupar toda a largura disponível */
 
   @media (min-width: 768px) {
-    h1{
-      font-size: 4rem ;
-    }
-    
-    p{
-      
-      font-size: 1.5rem ;
-    }
+    text-align: left; /* Alinha o texto à esquerda no desktop */
+    max-width: 50%; /* Limita a largura do texto no desktop */
+    margin-left: 10%; /* Adiciona margem à esquerda no desktop */
   }
-`
+`;
 
 const Form = styled.form`
   display: flex;
   flex-direction: column;
-  gap: 0.3rem;
-  margin-top: 20px;
+  align-items: center;
+  gap: 1rem;
+  width: 100%; /* Ajusta para ocupar toda a largura disponível */
 
-  .email, .nome{
+  .nome, .email {
     background-color: transparent;
     border: solid 1px #ffffff;
-    height: 40px;
-    width: 250px;
+    height: 40px; /* Reduzido para mobile */
+    width: 100%; /* Ajusta para ocupar toda a largura disponível */
+    max-width: 300px; /* Limita a largura máxima */
     border-radius: 15px;
     color: #ffffff;
     padding-left: 15px;
-    font-size: 1.3rem;
+    font-size: 0.9rem; /* Reduzido para mobile */
     font-family: "Lato", sans-serif;
   }
 
-  .button{
-    margin-top: 15px;
+  .button {
     background-color: #ffffff;
     border: none;
-    height: 40px;
-    width: 250px;
+    height: 40px; /* Reduzido para mobile */
+    width: 100%; /* Ajusta para ocupar toda a largura disponível */
+    max-width: 300px; /* Limita a largura máxima */
     border-radius: 10px;
     color: #000000;
-    font-size: medium;
+    font-size: 0.9rem; /* Reduzido para mobile */
     font-weight: 600;
+    cursor: pointer;
   }
 
-  .email::placeholder, .nome::placeholder{
+  .nome::placeholder, .email::placeholder {
     color: #fff;
     font-family: "Lato", sans-serif;
     font-weight: 100;
-    font-size: 15px;
+    font-size: 0.9rem; /* Reduzido para mobile */
   }
 
+  // @media (min-width: 768px) {
+  //   align-items: flex-start; /* Alinha os inputs à esquerda no desktop */
+  //   .nome, .email, .button {
+  //     width: 400px;
+  //     height: 50px;
+  //     font-size: 1rem;
+  //   }
+  // }
+`;
 
-  @media (min-width: 768px) {
-    align-items: center;
-    width: 100%;
-    .email, .nome, .button{
-      width: 60%;
-      height: 50px;
-    }
-
-  }
-`
-
-const Wapper = styled.div`
-
+const Div1 = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 650px;
+  gap: 1rem;
+  flex: 1;
+  padding-bottom: 150px; /* Reduzido para mobile */
 
-  button{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: #ffffff;
-    border: none;
-    /* height: 45px; */
-    /* width: 60%; */
-    padding: 15px 10px;
-    border-radius: 10px;
-    color: #000000;
+  h1 {
+    font-family: "Amiri Quran", sans-serif;
     font-weight: 400;
-    font-size: 1rem;
+    font-size: 3rem; /* Reduzido para mobile */
+    height: auto; /* Remove altura fixa */
+    margin-bottom: 1rem;
   }
-  
-  
 
-  @media (max-width: 768px) {
-    /* width: 80%; */
-    width: auto;
-    margin-left: 0;
-    
-    
-    button{
-      
-      font-size: 0.8rem;
+  p {
+    font-family: "Lato", sans-serif;
+    font-weight: 300;
+    font-size: 1rem; /* Reduzido para mobile */
+    text-align: center;
+    padding-bottom: 1rem;
+
+    b {
+      font-weight: 600;
     }
   }
 
-  @media (min-width: 1180px) {
-    
-    margin-left: 10%;
-    
+  @media (min-width: 768px) {
+    align-items: center; /* Alinha o texto ao centro no desktop */
+
+    h1 {
+      font-size: 7rem; /* Ajusta o tamanho do título no desktop */
+      height: 210px; /* Ajusta a altura do título no desktop */
+    }
+
+    p {
+      max-width: 400px;
+      font-size: 1.5rem;
+    }
   }
-
-
-
-`
-
+`;
 function App() {
   const [nome, setNome] = useState('');
   const [email, setEmail] = useState('');
   const history = useNavigate();
-
-
 
   function cadastroMailbiz(e) {
     e.preventDefault();
 
     const options = {
       method: 'POST',
-      url: `https://mbiz.mailclick.me/api.php/Subscriber.Subscribe?APIKey=${process.env.API_KEY}&Command=Subscriber.Subscribe&ResponseFormat=JSON&ListID=13439&EmailAddress=${email}&CustomField1=${nome}&IPAddress=12`
+      url: `https://mbiz.mailclick.me/api.php/Subscriber.Subscribe?APIKey=${process.env.API_KEY}&Command=Subscriber.Subscribe&ResponseFormat=JSON&ListID=20603&EmailAddress=${email}&CustomField1=${nome}&IPAddress=12`
     };
+
 
     axios
       .request(options)
@@ -181,25 +150,15 @@ function App() {
         console.error(error);
       });
 
-    // Aqui você pode realizar qualquer ação necessária após o envio do formulário,
-    // como enviar os dados para o servidor, exibir uma mensagem de sucesso, etc.
-
-    // Após isso, você pode redirecionar para a página desejada usando o objeto `history`.
     history('/obrigado');
   }
 
   return (
-
-    <>
-      <Main>
-
-        <Wapper>
-
-          <Container>
-            <h1>INVERNO 24’</h1>
-            <p>Clique abaixo para ganhar <b>FRETE GRÁTIS</b> no dia do lançamento e ter acesso à nossa comunidade exclusiva!</p>
-          </Container>
-
+    <Main>
+      <Container>
+        <Div1>
+          <h1>SCULTURA</h1>
+          <p>se cadastre para ganhar <br /><b>cupom de 10% off</b><br /> no dia do lançamento</p>
           <Form onSubmit={cadastroMailbiz}>
             <input
               className='nome'
@@ -219,12 +178,12 @@ function App() {
             />
             <input className='button' type="submit" value={'SE INSCREVA'} />
           </Form>
-        </Wapper>
-      </Main>
-    </>
+        </Div1>
+      </Container>
+    </Main>
   );
 }
 
-export default App
+export default App;
 
 

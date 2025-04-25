@@ -103,12 +103,17 @@ function App() {
     // Dispara o evento de "Lead" quando o botão é clicado
     // Abre o link do WhatsApp
     window.open('https://chat.whatsapp.com/CV8PE4KNuWbJgmsJyv1Xs9');
-    pixelLead()
   };
 
   const pixelLead = () => {
     return fbq('track', 'Lead')
   }
+
+
+  useEffect(() => {
+    pixelLead()
+  }, [])
+
 
 
 
